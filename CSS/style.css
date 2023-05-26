@@ -9,6 +9,17 @@ body{
   background-image: url("../IMG/confetti.svg");
   background-color: #fff;  
 }
+::-webkit-scrollbar{
+  width: 15px;
+}
+::-webkit-scrollbar-track{
+  border: 1px #d9d9d9 solid;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #81CEFB;
+  border-radius: 10px;
+}
 .container-top{
   width: 100%;
   height: 100%;
@@ -174,78 +185,52 @@ body{
   text-align: center;
   margin-bottom: 50px;
 }
-.container-bottom{
+footer {
   width: 100%;
-  min-height: 90vh;
-  background-image: url("../IMG/wave.svg");
-  background-repeat: no-repeat;
-  background-size: 100%;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(4, 300px); 
   place-content: center;
-  padding: 80px;
+  column-gap: 80px;
+  padding-top: 150px;
+  padding-bottom: 80px;
+  border-top-left-radius: 70%;
+  border-top-right-radius: 70%;
+  background: #d9f1ff;
 }
-.container-footer{
+.container-veja-mais, .container-presente-cegonha, .container-redes-atendimento{
   display: grid;
-  grid-template-columns: 1fr;
-}
-.container-footer-top{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding-top: 80px;
-  place-content: center;
-}
-.container-informacoes{
-  display: grid;
-  grid-template-columns: 1fr;
-}
-.container-informacoes-presente{
-  display: grid;
-  grid-template-columns: 1fr;
   height: 60%;
-  gap: 3px;
 }
-.veja-mais, .presente-da-cegonha, .redes, .atendimento{
+.container-redes-atendimento{
+  gap: 20px;
+}
+.title-footer{
+  color: #334f81;
+  font-weight: 500;
   font-size: 1.2em;
-  font-weight: 600;
-  color: #334F81;
   margin-bottom: 10px;
 }
-.link, .horario, .phone-number{
-  text-decoration: none;
-  color: #6B85B2;
+.sub-text, .link, .link-presente{
+  color: #6b85b2;
   font-weight: 400;
+  text-decoration: none;
+}
+.link, .sub-text{
   margin-bottom: 3px;
 }
-.link:hover{
-  color: #334F81;
+.link:hover, .link-presente:hover{
+  color:#334f81;
 }
 .redes-picture{
-  height: 40px;
   width: 40px;
-  margin-right: 8px;
-}
-.container-atendimento{
-  margin-top: 20px;
+  height: 40px;
 }
 .container-phone{
   display: grid;
   grid-template-columns: 25px 1fr;
-  margin-top: 5px;
   gap: 8px;
 }
-.phone{
-  height: 100%;
-  width: 100%;
-}
-.container-pagamento-picture{
-  display: grid;
-  grid-template-columns: repeat(8, 65px);
-  place-content: center;
-  align-items: center;
-  gap: 10px;
-}
-.pagamento{
-  width: 100%;
-  align-items: center; 
+.phone-picture{
+  width: 25px;
+  height: 25px;
 }
