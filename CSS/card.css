@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    transition: all 300ms ease;
+    text-decoration: none;
+    list-style: none;
+}
+:root{
+    --primary-text: #334F81;
+    --secondary-text: #6B85B2;
+    --white: #fff;
+    --grey: #B2B2B2;
+    --pink-heart: #F5C4DA;
+    --pink2-heart: #ec9abf;
+    --btn-grey: #f8f8f8;
+    --btn-grey2: #efefef;
+    --btn-yellow: #FFd375;
+    --btn-yellow2: #fec155;
+}
+body{
+    background: #444;
+}
+section{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    max-width: 830px;
+    width: 100%;
+}
+.wrapper .carousel{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 35px;
+    overflow: hidden;
+}
+.carousel .card{
+    background-color: var(--white);
+    border-radius: 8px;
+}
+.card .img img{
+    width: 250px;
+    height: 250px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+.card .namePrice{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primary-text);
+    font-weight: 600;
+    font-size: 0.9em;
+}
