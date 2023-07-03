@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 26-Maio-2023 às 14:31
--- Versão do servidor: 8.0.31
--- versão do PHP: 8.0.26
+-- Tempo de geração: 03-Jul-2023 às 19:31
+-- Versão do servidor: 5.7.36
+-- versão do PHP: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Banco de dados: `lojabebe`
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
-  `usu_id` int NOT NULL,
+  `ad_id` int(11) NOT NULL,
   `ad_name` varchar(50) NOT NULL,
   `ad_office` varchar(50) NOT NULL,
-  KEY `usu_id` (`usu_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  KEY `usu_id` (`ad_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -43,12 +43,12 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 DROP TABLE IF EXISTS `bairro`;
 CREATE TABLE IF NOT EXISTS `bairro` (
-  `bai_id` int NOT NULL AUTO_INCREMENT,
+  `bai_id` int(11) NOT NULL AUTO_INCREMENT,
   `Codigo` char(10) NOT NULL,
   `Nome` varchar(255) NOT NULL,
   `Uf` char(2) NOT NULL,
   PRIMARY KEY (`bai_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14321 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14321 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `bairro`
@@ -14399,14 +14399,14 @@ INSERT INTO `bairro` (`bai_id`, `Codigo`, `Nome`, `Uf`) VALUES
 
 DROP TABLE IF EXISTS `carrinho`;
 CREATE TABLE IF NOT EXISTS `carrinho` (
-  `car_id` int NOT NULL AUTO_INCREMENT,
-  `prod_quant` int NOT NULL,
-  `car_preco` int NOT NULL,
-  `usu_id` int NOT NULL,
+  `car_id` int(11) NOT NULL AUTO_INCREMENT,
+  `car_quant` int(11) NOT NULL,
+  `car_preco` int(11) NOT NULL,
+  `car_usu` int(11) NOT NULL,
   PRIMARY KEY (`car_id`),
-  KEY `usu_id` (`usu_id`),
-  KEY `prod_quant` (`prod_quant`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  KEY `usu_id` (`car_usu`),
+  KEY `prod_quant` (`car_quant`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -14416,15 +14416,18 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
 
 DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
-  `cli_cpf` int NOT NULL,
-  `usu_id` int NOT NULL,
-  `end_id` int DEFAULT NULL,
+  `cli_id` int(40) NOT NULL AUTO_INCREMENT,
+  `cli_end` int(11) DEFAULT NULL,
   `cli_name` varchar(50) NOT NULL,
   `cli_born` date NOT NULL,
-  PRIMARY KEY (`cli_cpf`),
-  KEY `usu_id` (`usu_id`),
-  KEY `end_id` (`end_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `cli_email` varchar(20) NOT NULL,
+  `cli_pass` varchar(40) NOT NULL,
+  `cli_usu` varchar(40) NOT NULL,
+  `cli_cpf` varchar(14) NOT NULL,
+  `cli_cell` varchar(20) NOT NULL,
+  PRIMARY KEY (`cli_id`),
+  KEY `end_id` (`cli_end`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -14434,19 +14437,19 @@ CREATE TABLE IF NOT EXISTS `client` (
 
 DROP TABLE IF EXISTS `endereço`;
 CREATE TABLE IF NOT EXISTS `endereço` (
-  `end_id` int NOT NULL AUTO_INCREMENT,
-  `end_num` int NOT NULL,
+  `end_id` int(11) NOT NULL AUTO_INCREMENT,
+  `end_num` int(11) NOT NULL,
   `end_logra` varchar(50) NOT NULL,
-  `bai_id` int NOT NULL,
-  `est_id` int NOT NULL,
-  `mun_id` int NOT NULL,
-  `reg_id` int NOT NULL,
+  `end_bai` int(11) NOT NULL,
+  `end_est` int(11) NOT NULL,
+  `end_mun` int(11) NOT NULL,
+  `end_reg` int(11) NOT NULL,
   PRIMARY KEY (`end_id`),
-  KEY `reg_id` (`reg_id`),
-  KEY `est_id` (`est_id`),
-  KEY `mun_id` (`mun_id`),
-  KEY `bai_id` (`bai_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  KEY `reg_id` (`end_reg`),
+  KEY `est_id` (`end_est`),
+  KEY `mun_id` (`end_mun`),
+  KEY `bai_id` (`end_bai`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -14456,13 +14459,13 @@ CREATE TABLE IF NOT EXISTS `endereço` (
 
 DROP TABLE IF EXISTS `envio`;
 CREATE TABLE IF NOT EXISTS `envio` (
-  `envi_id` int NOT NULL AUTO_INCREMENT,
-  `envi_data` int NOT NULL,
-  `envi_preço` int NOT NULL,
-  `end_id` int NOT NULL,
+  `envi_id` int(11) NOT NULL AUTO_INCREMENT,
+  `envi_data` int(11) NOT NULL,
+  `envi_preço` int(11) NOT NULL,
+  `env_end` int(11) NOT NULL,
   PRIMARY KEY (`envi_id`),
-  KEY `end_id` (`end_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  KEY `end_id` (`env_end`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -14472,13 +14475,13 @@ CREATE TABLE IF NOT EXISTS `envio` (
 
 DROP TABLE IF EXISTS `estado`;
 CREATE TABLE IF NOT EXISTS `estado` (
-  `est_id` int NOT NULL,
-  `CodigoUf` int NOT NULL,
+  `est_id` int(11) NOT NULL,
+  `CodigoUf` int(11) NOT NULL,
   `Nome` varchar(50) NOT NULL,
   `Uf` char(2) NOT NULL,
-  `Regiao` int NOT NULL,
+  `Regiao` int(11) NOT NULL,
   PRIMARY KEY (`est_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `estado`
@@ -14521,12 +14524,12 @@ INSERT INTO `estado` (`est_id`, `CodigoUf`, `Nome`, `Uf`, `Regiao`) VALUES
 
 DROP TABLE IF EXISTS `municipio`;
 CREATE TABLE IF NOT EXISTS `municipio` (
-  `mun_id` int NOT NULL AUTO_INCREMENT,
-  `mun_cod` int NOT NULL,
-  `mun_nome` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `mun_uf` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `mun_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mun_cod` int(11) NOT NULL,
+  `mun_nome` varchar(255) NOT NULL,
+  `mun_uf` char(2) NOT NULL,
   PRIMARY KEY (`mun_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `municipio`
@@ -20116,12 +20119,12 @@ INSERT INTO `municipio` (`mun_id`, `mun_cod`, `mun_nome`, `mun_uf`) VALUES
 
 DROP TABLE IF EXISTS `pagamento`;
 CREATE TABLE IF NOT EXISTS `pagamento` (
-  `pag_id` int NOT NULL AUTO_INCREMENT,
-  `pag_tipo` int NOT NULL,
-  `ped_id` int NOT NULL,
+  `pag_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pag_tipo` int(11) NOT NULL,
+  `pag_ped` int(11) NOT NULL,
   PRIMARY KEY (`pag_id`),
-  KEY `ped_id` (`ped_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  KEY `ped_id` (`pag_ped`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -20131,14 +20134,14 @@ CREATE TABLE IF NOT EXISTS `pagamento` (
 
 DROP TABLE IF EXISTS `pedido`;
 CREATE TABLE IF NOT EXISTS `pedido` (
-  `ped_id` int NOT NULL AUTO_INCREMENT,
+  `ped_id` int(11) NOT NULL AUTO_INCREMENT,
   `ped_data` date NOT NULL,
-  `car_id` int NOT NULL,
-  `envi_id` int NOT NULL,
+  `ped_car` int(11) NOT NULL,
+  `ped_envi` int(11) NOT NULL,
   PRIMARY KEY (`ped_id`),
-  KEY `car_id` (`car_id`),
-  KEY `envi_id` (`envi_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  KEY `car_id` (`ped_car`),
+  KEY `envi_id` (`ped_envi`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -20148,12 +20151,12 @@ CREATE TABLE IF NOT EXISTS `pedido` (
 
 DROP TABLE IF EXISTS `produto`;
 CREATE TABLE IF NOT EXISTS `produto` (
-  `prod_id` int NOT NULL AUTO_INCREMENT,
+  `prod_id` int(11) NOT NULL AUTO_INCREMENT,
   `prod_nome` varchar(50) NOT NULL,
-  `prod_quant` int NOT NULL,
-  `prod_preço` int NOT NULL,
+  `prod_quant` int(11) NOT NULL,
+  `prod_preço` int(11) NOT NULL,
   PRIMARY KEY (`prod_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -20163,10 +20166,10 @@ CREATE TABLE IF NOT EXISTS `produto` (
 
 DROP TABLE IF EXISTS `regiao`;
 CREATE TABLE IF NOT EXISTS `regiao` (
-  `reg_id` int NOT NULL,
+  `reg_id` int(11) NOT NULL,
   `Nome` varchar(50) NOT NULL,
   PRIMARY KEY (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `regiao`
@@ -20178,20 +20181,6 @@ INSERT INTO `regiao` (`reg_id`, `Nome`) VALUES
 (3, 'Sudeste'),
 (4, 'Sul'),
 (5, 'Centro-Oeste');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `usu_id` int NOT NULL AUTO_INCREMENT,
-  `usu_pass` varchar(40) NOT NULL,
-  `usu_email` varchar(40) NOT NULL,
-  PRIMARY KEY (`usu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
