@@ -4,17 +4,17 @@ class Muser{
     private $end_id;
     private $end_num;
     private $end_logra;
-    private $bai_id;
-    private $mun_id;
-    private $reg_id;
+    private $end_bai;
+    private $end_mun;
+    private $end_reg;
 
-    public function __construct($end_id, $end_num, $end_logra, $bai_id, $mun_id, $reg_id) {
+    public function __construct($end_id, $end_num, $end_logra, $end_bai, $end_mun, $end_reg) {
         $this-> end_id= $end_id; 
         $this-> end_num = $end_num; 
         $this-> end_logra = $end_logra; 
-        $this-> bai_id = $bai_id; 
-        $this-> mun_id = $mun_id;
-        $this-> reg_id = $reg_id; 
+        $this-> end_bai = $end_bai; 
+        $this-> end_mun = $end_mun;
+        $this-> end_reg = $end_reg; 
     }
 
 public function getNum(){
@@ -30,15 +30,15 @@ public function getId(){
 }
 
 public function getBai(){
-    return $this->bai_id;
+    return $this->end_bai;
 }
 
 public function getMun(){
-    return $this->mun_id;
+    return $this->end_mun;
 }
 
 public function getReg(){
-    return $this->reg_id;
+    return $this->end_reg;
 }
 
 public function setNum($end_num) {
@@ -53,15 +53,15 @@ public function setId($end_id) {
     $this->end_id = $end_id;
 }
 
-public function setBai($bai_id) {
-    $this->bai_id = $bai_id;
+public function setBai($end_bai) {
+    $this->end_bai = $end_bai;
 }
 
-public function setMun($mun_id) {
-    $this->mun_id = $mun_id;
+public function setMun($end_mun) {
+    $this->end_mun = $end_mun;
 }
 
-public function setReg($reg_id) {
-    $this->reg_id = $reg_id;
+public function setReg($end_reg) {
+    $this->end_reg = $end_reg;
 }
 }

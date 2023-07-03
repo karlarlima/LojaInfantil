@@ -2,12 +2,12 @@
 class Mpag{
     private $pag_id;
     private $pag_tipo;
-    private $ped_id;
+    private $pag_ped;
 
-    public function __construct($pag_id, $pag_tipo, $ped_id) {
+    public function __construct($pag_id, $pag_tipo, $pag_ped) {
         $this-> pag_id= $pag_id; 
         $this-> pag_tipo = $pag_tipo; 
-        $this-> ped_id = $ped_id; 
+        $this-> pag_ped = $pag_ped; 
     }
 
 
@@ -20,7 +20,7 @@ public function getTipo(){
 }
 
 public function getPed(){
-    return $this->ped_id;
+    return $this->pag_ped;
 }
 
 public function setId($pag_id) {
@@ -30,8 +30,8 @@ public function setId($pag_id) {
 public function setTipo($pag_tipo) {
     $this->pag_tipo = $pag_tipo;
 }
-public function setPed($ped_id) {
-    $this->ped_id = $ped_id;
+public function setPed($pag_ped) {
+    $this->pag_ped = $pag_ped;
 }
 
 }

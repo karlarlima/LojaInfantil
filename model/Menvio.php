@@ -4,13 +4,13 @@ class Menvi{
     private $envi_id;
     private $envi_data;
     private $envi_preco;
-    private $end_id;
+    private $env_end;
 
-    public function __construct($envi_id, $envi_data, $envi_preco, $end_id) {
+    public function __construct($envi_id, $envi_data, $envi_preco, $env_end) {
         $this-> envi_id= $envi_id; 
         $this-> envi_data = $envi_data; 
         $this-> envi_preco = $envi_preco;
-        $this-> end_id = $end_id; 
+        $this-> env_end = $env_end; 
     }
 
 public function getId(){
@@ -26,7 +26,7 @@ public function getPreco(){
 }
 
 public function getEnd(){
-    return $this->end_id;
+    return $this->env_end;
 }
 
 public function setId($envi_id) {
@@ -40,8 +40,8 @@ public function setPreco($envi_preco) {
     $this->envi_preco = $envi_preco;
 }
 
-public function setEnd($end_id) {
-    $this->end_id = $end_id;
+public function setEnd($env_end) {
+    $this->env_end = $env_end;
 }
 }
 ?>

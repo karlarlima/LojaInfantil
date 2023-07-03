@@ -1,46 +1,45 @@
 <?php	
-
 class Mcar{
     private $car_id;
-    private $car_nome;
-    private $prod_quant;
-    private $car_valor;
+    private $car_quant;
+    private $car_preco;
+    private $car_usu;
 
-    public function __construct($car_id, $car_nome, $prod_quant, $car_valor) {
+    public function __construct($car_id, $car_quant, $car_preco, $car_usu) {
         $this-> car_id= $car_id; 
-        $this-> car_nome = $car_nome; 
-        $this-> prod_quant = $prod_quant;
-        $this-> car_valor = $car_valor; 
+        $this-> car_quant = $car_quant; 
+        $this-> car_preco = $car_preco;
+        $this-> car_usu = $car_usu; 
     }
 
-
-public function getNome(){
-    return $this->car_nome;
-}
-
-public function getQuant(){
-    return $this->prod_quant;
-}
 
 public function getId(){
     return $this->car_id;
 }
 
-public function getValor(){
-    return $this->car_valor;
+public function getQuant(){
+    return $this->car_quant;
 }
-public function setNome($car_nome) {
-    $this->car_nome = $car_nome;
+
+public function getPreco(){
+    return $this->car_preco;
 }
-public function setQuant($prod_quant) {
-    $this->prod_quant = $prod_quant;
+
+public function getUsu(){
+    return $this->car_usu;
 }
 public function setId($car_id) {
     $this->car_id = $car_id;
 }
+public function setQuant($car_quant) {
+    $this->car_quant = $car_quant;
+}
+public function setPreco($car_preco) {
+    $this->car_preco = $car_preco;
+}
 
-public function setValor($car_valor) {
-    $this->car_valor = $car_valor;
+public function setUsu($car_usu) {
+    $this->car_usu = $car_usu;
 }
 }
 ?>

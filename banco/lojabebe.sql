@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Banco de dados: `lojabebe`
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `ad_name` varchar(50) NOT NULL,
   `ad_office` varchar(50) NOT NULL,
   KEY `usu_id` (`usu_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `bairro` (
   `Nome` varchar(255) NOT NULL,
   `Uf` char(2) NOT NULL,
   PRIMARY KEY (`bai_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14321 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14321 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `bairro`
@@ -14406,7 +14406,7 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
   PRIMARY KEY (`car_id`),
   KEY `usu_id` (`usu_id`),
   KEY `prod_quant` (`prod_quant`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -14424,7 +14424,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   PRIMARY KEY (`cli_cpf`),
   KEY `usu_id` (`usu_id`),
   KEY `end_id` (`end_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -14446,7 +14446,7 @@ CREATE TABLE IF NOT EXISTS `endereço` (
   KEY `est_id` (`est_id`),
   KEY `mun_id` (`mun_id`),
   KEY `bai_id` (`bai_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -14462,7 +14462,7 @@ CREATE TABLE IF NOT EXISTS `envio` (
   `end_id` int NOT NULL,
   PRIMARY KEY (`envi_id`),
   KEY `end_id` (`end_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -14478,7 +14478,7 @@ CREATE TABLE IF NOT EXISTS `estado` (
   `Uf` char(2) NOT NULL,
   `Regiao` int NOT NULL,
   PRIMARY KEY (`est_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `estado`
@@ -14523,10 +14523,10 @@ DROP TABLE IF EXISTS `municipio`;
 CREATE TABLE IF NOT EXISTS `municipio` (
   `mun_id` int NOT NULL AUTO_INCREMENT,
   `mun_cod` int NOT NULL,
-  `mun_nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `mun_uf` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mun_nome` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `mun_uf` char(2) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`mun_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5571 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `municipio`
@@ -20121,7 +20121,7 @@ CREATE TABLE IF NOT EXISTS `pagamento` (
   `ped_id` int NOT NULL,
   PRIMARY KEY (`pag_id`),
   KEY `ped_id` (`ped_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -20138,7 +20138,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   PRIMARY KEY (`ped_id`),
   KEY `car_id` (`car_id`),
   KEY `envi_id` (`envi_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -20153,7 +20153,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `prod_quant` int NOT NULL,
   `prod_preço` int NOT NULL,
   PRIMARY KEY (`prod_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -20166,7 +20166,7 @@ CREATE TABLE IF NOT EXISTS `regiao` (
   `reg_id` int NOT NULL,
   `Nome` varchar(50) NOT NULL,
   PRIMARY KEY (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Extraindo dados da tabela `regiao`
@@ -20191,7 +20191,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `usu_pass` varchar(40) NOT NULL,
   `usu_email` varchar(40) NOT NULL,
   PRIMARY KEY (`usu_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
