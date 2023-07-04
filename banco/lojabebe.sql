@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 03-Jul-2023 às 19:31
+-- Tempo de geração: 04-Jul-2023 às 18:46
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -14411,6 +14411,29 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `categoria`
+--
+
+DROP TABLE IF EXISTS `categoria`;
+CREATE TABLE IF NOT EXISTS `categoria` (
+  `cat_id` int(40) NOT NULL AUTO_INCREMENT,
+  `cat_categoria` varchar(40) NOT NULL,
+  PRIMARY KEY (`cat_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `categoria`
+--
+
+INSERT INTO `categoria` (`cat_id`, `cat_categoria`) VALUES
+(1, 'Roupas'),
+(2, 'Brinquedos'),
+(3, 'Enxoval'),
+(4, 'Higiene e Saúde');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `client`
 --
 
@@ -14419,15 +14442,15 @@ CREATE TABLE IF NOT EXISTS `client` (
   `cli_id` int(40) NOT NULL AUTO_INCREMENT,
   `cli_end` int(11) DEFAULT NULL,
   `cli_name` varchar(50) NOT NULL,
-  `cli_born` date NOT NULL,
+  `cli_born` date DEFAULT NULL,
   `cli_email` varchar(20) NOT NULL,
   `cli_pass` varchar(40) NOT NULL,
   `cli_usu` varchar(40) NOT NULL,
-  `cli_cpf` varchar(14) NOT NULL,
+  `cli_cpf` varchar(14) DEFAULT NULL,
   `cli_cell` varchar(20) NOT NULL,
   PRIMARY KEY (`cli_id`),
   KEY `end_id` (`cli_end`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -20155,8 +20178,16 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `prod_nome` varchar(50) NOT NULL,
   `prod_quant` int(11) NOT NULL,
   `prod_preço` int(11) NOT NULL,
-  PRIMARY KEY (`prod_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `prod_desc` varchar(100) NOT NULL,
+  `prod_img1` blob NOT NULL,
+  `prod_img2` blob NOT NULL,
+  `prod_img3` blob NOT NULL,
+  `prod_cat` int(40) NOT NULL,
+  `prod_sub` int(40) NOT NULL,
+  PRIMARY KEY (`prod_id`),
+  KEY `prod_cat` (`prod_cat`),
+  KEY `prod_sub` (`prod_sub`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -20181,6 +20212,60 @@ INSERT INTO `regiao` (`reg_id`, `Nome`) VALUES
 (3, 'Sudeste'),
 (4, 'Sul'),
 (5, 'Centro-Oeste');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `subcategoria`
+--
+
+DROP TABLE IF EXISTS `subcategoria`;
+CREATE TABLE IF NOT EXISTS `subcategoria` (
+  `sub_id` int(40) NOT NULL AUTO_INCREMENT,
+  `sub_cat` varchar(40) NOT NULL,
+  `subcat_id` int(11) NOT NULL,
+  PRIMARY KEY (`sub_id`),
+  KEY `subcat_id` (`subcat_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `subcategoria`
+--
+
+INSERT INTO `subcategoria` (`sub_id`, `sub_cat`, `subcat_id`) VALUES
+(18, 'Bicicletas', 2),
+(19, 'Bonecas', 2),
+(20, 'Instrumentos Musicais', 2),
+(7, 'Acessório', 1),
+(8, 'Blusas', 1),
+(9, 'Calçados', 1),
+(10, 'Casacos', 1),
+(11, 'Conjuntos', 1),
+(12, 'Jardineiras', 1),
+(13, 'Leggings', 1),
+(14, 'Meias', 1),
+(15, 'Pijamas', 1),
+(16, 'Saias', 1),
+(17, 'Vestidos', 1),
+(21, 'Jogos', 2),
+(22, 'Pelúcias', 2),
+(23, 'Alimentação', 3),
+(24, 'Banheiras', 3),
+(25, 'Escovas para Cabelo', 3),
+(26, 'Mamãe', 3),
+(27, 'Quarto de Bebê', 3),
+(28, 'Transporte', 3),
+(29, 'Trocador', 3),
+(30, 'Condicionador', 4),
+(31, 'Cotonete', 4),
+(32, 'Fralda', 4),
+(33, 'Hidratante', 4),
+(34, 'Lenço', 4),
+(35, 'Perfume', 4),
+(36, 'Pomada', 4),
+(37, 'Sabonete', 4),
+(38, 'Shampoo', 4),
+(39, 'Toalha', 4);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
