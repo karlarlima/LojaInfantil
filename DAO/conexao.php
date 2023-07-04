@@ -1,5 +1,5 @@
 <?php
-class Conn{
+class conexao{
     private static $instancia = NULL;
 
     public static function criarInstancia() {

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cadastro</title>
-<link rel="shortcut icon" href="../IMG/logo.png" type="image/x-icon" />
-<link rel="stylesheet" href="../CSS/style.css">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="shortcut icon" href="../IMG/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container-top">
         <div class="container">
@@ -18,19 +20,24 @@
 
 
 
-            <form class="container-righ" autocomplete="off">
+            <form class="container-right" autocomplete="off" method="POST" action="../Controller/Rcad.php?acao=enviar&tipo=cadastro">
+
                 <h1 class="title">Cadastro</h1>
                 <div class="container-textbox">
-                    <input type="text" class="textbox" placeholder="Nome completo" required name="nome">
-                    <input type="text" class="textbox" placeholder="E-mail" required name="email">
-                    <input type="text" class="textbox" placeholder="Telefone" required name="telefone">
-                    <input type="text" class="textbox" placeholder="Nome de usuário" required name="user">             
-                </div>  
+                    <input type="hidden" class="textbox" required name="cli_id">
+                    <input type="text" class="textbox" placeholder="Nome completo" required name="cli_name">
+                    <input type="text" class="textbox" placeholder="E-mail" required name="cli_email">
+                    <input type="text" class="textbox" placeholder="Telefone" required name="cli_cell">
+                    <input type="text" class="textbox" placeholder="Nome de usuário" required name="cli_usu">
+                    <input type="hidden" class="textbox" required name="cli_cpf">
+                    <input type="hidden" class="textbox" required name="cli_born">
+                    <input type="hidden" class="textbox" required name="cli_end">
+                </div>
                 <div class="container-password">
-                <input type="password" class="textbox-password" placeholder="Senha" required>
-                <input type="password" class="textbox-password" placeholder="Confirme sua senha" required name="pass">
-                </div>    
-                <input type="submit" class="btn-cadastro" value="Cadastre-se" name="enviar">   
+                    <input type="password" class="textbox-password" placeholder="Senha" required>
+                    <input type="password" class="textbox-password" placeholder="Confirme sua senha" required name="cli_pass">
+                </div>
+                <input type="submit" class="btn-cadastro" value="Cadastre-se" name="enviar">
                 <p class="login">Já possui uma conta? <a href="Vlogin.html" class="login-account">Entrar</a></p>
             </form>
 
@@ -76,4 +83,5 @@
         </div>
     </footer>
 </body>
+
 </html>
