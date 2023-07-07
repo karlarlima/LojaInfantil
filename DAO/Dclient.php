@@ -1,27 +1,27 @@
 <?php
 class Dclient
 {	
-    public static function salvarClient ($cli_name, $cli_email, $cli_pass, $cli_usu, $cli_cell)
+    public static function salvarClient($cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell, $cli_tipo)
     {
         require "conexao.php";
         $conexaoBD = Conexao::criarInstancia();
-        $sql = "INSERT INTO client (cli_id, cli_end, cli_name, cli_born, cli_email, cli_pass, cli_usu, cli_cpf, cli_cell) VALUES (NULL, NULL, ?, NULL, ?, ?, ?, NULL, ?)";
+        $sql = "INSERT INTO client (cli_id ,cli_end, cli_name, cli_born, cli_email, cli_pass, cli_usu, cli_cpf, cli_cell, cli_tipo) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conexaoBD->prepare($sql);
 
         try {
-            $stmt->execute(array( $cli_name,  $cli_email, $cli_pass, $cli_usu,  $cli_cell));
-            header("location: ../View/Vcadastro.php");
+            $stmt->execute(array($cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell, $cli_tipo));
+            header("location: ../View/usuarios_adm.php");
         } catch (Exception $ex) {
             echo $ex;
             return 0;
         }
-    }
+}
 
     public static function carregarClient()
     {
         require "conexao.php";
         $conexaoBD = Conexao::criarInstancia();
-        $sql = "SELECT * FROM client;";
+        $sql = "SELECT * FROM client ";
 
         try {
             $stmt = $conexaoBD->query($sql);
@@ -41,8 +41,8 @@ class Dclient
         $stmt = $conexaoBD->prepare($sql);
 
         try {
-            $stmt->execute(array($it_id));
-            header("location: ../View/Vcadastro.php");
+            $stmt->execute(array($cli_id));
+            header("location: ../View/usuarios_adm.php");
         } catch (Exception $ex) {
             echo $ex;
             return 0;
@@ -51,15 +51,15 @@ class Dclient
 
 
     
-    public static function editarClient($cli_id, $cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell)
+    public static function editarClient($cli_id, $cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell, $cli_tipo)
     {
         require "conexao.php";
         $conexaoBD = Conexao::criarInstancia();
-        $sql = "UPDATE client set cli_end = ?, cli_name = ?, cli_born = ?, cli_email = ?, cli_pass = ?, cli_usu = ?, cli_cpf = ?, cli_cell = ? where cli_id= ?";
+        $sql = "UPDATE client set cli_end = ?, cli_name = ?, cli_born = ?, cli_email = ?, cli_pass = ?, cli_usu = ?, cli_cpf = ?, cli_cell = ?, cli_tipo = ? where cli_id= ?";
         $stmt = $conexaoBD->prepare($sql);
 
         try {
-            $stmt->execute(array($cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell, $cli_id));
+            $stmt->execute(array($cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell, $cli_tipo, $cli_id));
             header("location: ../View/Vcadastro.php");
         } catch (Exception $ex) {
             echo $ex;

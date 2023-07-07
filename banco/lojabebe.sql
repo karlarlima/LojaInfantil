@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 04-Jul-2023 às 18:46
+-- Tempo de geração: 06-Jul-2023 às 19:00
 -- Versão do servidor: 5.7.36
 -- versão do PHP: 7.4.26
 
@@ -20,20 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `lojabebe`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `admin`
---
-
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `ad_id` int(11) NOT NULL,
-  `ad_name` varchar(50) NOT NULL,
-  `ad_office` varchar(50) NOT NULL,
-  KEY `usu_id` (`ad_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -14448,9 +14434,19 @@ CREATE TABLE IF NOT EXISTS `client` (
   `cli_usu` varchar(40) NOT NULL,
   `cli_cpf` varchar(14) DEFAULT NULL,
   `cli_cell` varchar(20) NOT NULL,
+  `cli_tipo` int(99) NOT NULL,
   PRIMARY KEY (`cli_id`),
-  KEY `end_id` (`cli_end`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+  KEY `end_id` (`cli_end`),
+  KEY `cli_tipo` (`cli_tipo`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `client`
+--
+
+INSERT INTO `client` (`cli_id`, `cli_end`, `cli_name`, `cli_born`, `cli_email`, `cli_pass`, `cli_usu`, `cli_cpf`, `cli_cell`, `cli_tipo`) VALUES
+(13, NULL, 'jefferson', NULL, 'jeff@kaka', '12345', 'jeff_vrum', NULL, '999999', 1),
+(12, 0, 'lulkjhkl,', '2023-07-05', 'jklkj,j', 'jk,jkh', ',njk,hj,', '0', '.jk.jhk.jk.', 2);
 
 -- --------------------------------------------------------
 
@@ -14538,6 +14534,22 @@ INSERT INTO `estado` (`est_id`, `CodigoUf`, `Nome`, `Uf`, `Regiao`) VALUES
 (25, 35, 'São Paulo', 'SP', 3),
 (26, 28, 'Sergipe', 'SE', 2),
 (27, 17, 'Tocantins', 'TO', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `favoritos`
+--
+
+DROP TABLE IF EXISTS `favoritos`;
+CREATE TABLE IF NOT EXISTS `favoritos` (
+  `fav_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fav_cli` int(11) DEFAULT NULL,
+  `fav_prod` int(11) DEFAULT NULL,
+  PRIMARY KEY (`fav_id`),
+  KEY `fav_cli` (`fav_cli`),
+  KEY `fav_prod` (`fav_prod`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -20174,20 +20186,32 @@ CREATE TABLE IF NOT EXISTS `pedido` (
 
 DROP TABLE IF EXISTS `produto`;
 CREATE TABLE IF NOT EXISTS `produto` (
-  `prod_id` int(11) NOT NULL AUTO_INCREMENT,
-  `prod_nome` varchar(50) NOT NULL,
-  `prod_quant` int(11) NOT NULL,
-  `prod_preço` int(11) NOT NULL,
+  `prod_id` int(99) NOT NULL AUTO_INCREMENT,
+  `prod_nome` varchar(99) NOT NULL,
+  `prod_quant` int(99) NOT NULL,
+  `prod_preco` int(99) NOT NULL,
   `prod_desc` varchar(100) NOT NULL,
-  `prod_img1` blob NOT NULL,
-  `prod_img2` blob NOT NULL,
-  `prod_img3` blob NOT NULL,
-  `prod_cat` int(40) NOT NULL,
-  `prod_sub` int(40) NOT NULL,
+  `prod_img1` varchar(99) NOT NULL,
+  `prod_img2` varchar(99) NOT NULL,
+  `prod_img3` varchar(99) NOT NULL,
+  `prod_cat` int(99) NOT NULL,
+  `prod_sub` int(99) NOT NULL,
   PRIMARY KEY (`prod_id`),
   KEY `prod_cat` (`prod_cat`),
   KEY `prod_sub` (`prod_sub`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`prod_id`, `prod_nome`, `prod_quant`, `prod_preco`, `prod_desc`, `prod_img1`, `prod_img2`, `prod_img3`, `prod_cat`, `prod_sub`) VALUES
+(5, 'hbfxvgbfcvbfv', 4, 87, 'fdtgfghnfgnfn', 'logo.png', 'logo.png', 'logo.png', 3, 24),
+(6, 'popo', 9, 9, 'dfdfgfddjdvfhbvjf dfbhdfgerui bfhiuhgifr bdufiudgvv', '1.png', 'logo.png', 'logo.png', 1, 1),
+(7, 'conjunto', 90, 700, 'Lorem ipsum dolor sit, amet consectetur elit nemo ut commodi.', '6.png', '12.png', '14.png', 1, 11),
+(8, 'troço', 60, 654, 'dfhgf ghfhgfh fghdfhdf dhdhrfd', '14.png', '12.png', '16.png', 1, 9),
+(9, 'bobobobobob', 80, 80, 'fghfggn ffghfghgf fhdfghdh', '2.png', '2.png', '2.png', 1, 1),
+(10, 'Fantasia abelha', 80, 500, 'hfghrfg fghsdfhgd dfhaergfd', '17.png', '', '', 1, 11);
 
 -- --------------------------------------------------------
 
@@ -20266,7 +20290,29 @@ INSERT INTO `subcategoria` (`sub_id`, `sub_cat`, `subcat_id`) VALUES
 (37, 'Sabonete', 4),
 (38, 'Shampoo', 4),
 (39, 'Toalha', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tipo`
+--
+
+DROP TABLE IF EXISTS `tipo`;
+CREATE TABLE IF NOT EXISTS `tipo` (
+  `tip_id` int(99) NOT NULL AUTO_INCREMENT,
+  `tip_name` varchar(99) NOT NULL,
+  PRIMARY KEY (`tip_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tipo`
+--
+
+INSERT INTO `tipo` (`tip_id`, `tip_name`) VALUES
+(1, 'Admin'),
+(2, 'User');
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

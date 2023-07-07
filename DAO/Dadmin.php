@@ -1,11 +1,11 @@
 <?php
-class Dadmin
+class Dfav
 {
-    public static function salvarAdmin($ad_name, $ad_office)
+    public static function salvarFav($ad_name, $ad_office)
     {
         require "conexao.php";
-        $conexaoBD = Conexao::criarInstancia();
-        $sql = "INSERT INTO client (ad_id, ad_name, ad_office) VALUES (NULL, ?, ?)";
+        $conexaoBD = conexao::criarInstancia();
+        $sql = "INSERT INTO favoritos (ad_id, ad_name, ad_office) VALUES (NULL, ?, ?)";
         $stmt = $conexaoBD->prepare($sql);
 
         try {
@@ -17,11 +17,11 @@ class Dadmin
         }
     }
 
-    public static function excluirCliente($ad_id)
+    public static function excluirFav($ad_id)
     {
         require "conexao.php";
-        $conexaoBD = Conexao::criarInstancia();
-        $sql = "DELETE FROM client where ad_id=?";
+        $conexaoBD = conexao::criarInstancia();
+        $sql = "DELETE FROM favoritos where ad_id=?";
         $stmt = $conexaoBD->prepare($sql);
 
         try {
@@ -33,11 +33,11 @@ class Dadmin
         }
     }
 
-    public static function editarClient($ad_id,	$ad_name, $ad_office)
+    public static function editarFav($ad_id,	$ad_name, $ad_office)
     {
         require "conexao.php";
-        $conexaoBD = Conexao::criarInstancia();
-        $sql = "UPDATE client set ad_name = ?, ad_office = ?  where ad_id= ?";
+        $conexaoBD = conexao::criarInstancia();
+        $sql = "UPDATE favoritos set ad_name = ?, ad_office = ?  where ad_id= ?";
         $stmt = $conexaoBD->prepare($sql);
 
         try {
@@ -49,11 +49,11 @@ class Dadmin
         }
     }
 
-    public static function carregarClient()
+    public static function carregarFav()
     {
         require "conn.php";
-        $conexaoBD = conn::criarInstancia();
-        $sql = "SELECT ad_id, ad_name, ad_office FROM user;";
+        $conexaoBD = conexao::criarInstancia();
+        $sql = "SELECT ad_id, ad_name, ad_office FROM favoritos;";
 
         try {
             $stmt = $conexaoBD->query($sql);

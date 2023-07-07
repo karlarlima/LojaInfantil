@@ -9,8 +9,9 @@ class Mclient{
     private $cli_usu;
     private $cli_cpf;
     private $cli_cell;
+    private $cli_tipo;
 
-    public function __construct($cli_id, $cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell) {
+    public function __construct($cli_id, $cli_end, $cli_name, $cli_born, $cli_email, $cli_pass, $cli_usu, $cli_cpf, $cli_cell, $cli_tipo) {
         $this-> cli_id= $cli_id; 
         $this-> cli_end = $cli_end; 
         $this-> cli_name = $cli_name; 
@@ -19,7 +20,8 @@ class Mclient{
         $this-> cli_pass = $cli_pass;
         $this-> cli_usu = $cli_usu;
         $this-> cli_cpf = $cli_cpf;
-        $this-> cli_cell = $cli_cell; 
+        $this-> cli_cell = $cli_cell;
+        $this-> cli_tipo = $cli_tipo; 
     }
 
 public function getId(){
@@ -58,6 +60,10 @@ public function getCell(){
     return $this->cli_cell;
 }
 
+public function getTipo(){
+    return $this->cli_tipo;
+}
+
 public function setId($cli_id) {
     $this->cli_id = $cli_id;
 }
@@ -92,5 +98,9 @@ public function setCpf($cli_cpf) {
 
 public function setCell($cli_cell) {
     $this->cli_cell = $cli_cell;
+}
+
+public function setTipo($cli_tipo) {
+    $this->cli_tipo = $cli_tipo;
 }
 }
