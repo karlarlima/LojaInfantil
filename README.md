@@ -1,1 +1,2 @@
-<div style="width: 640px; height: 480px; margin: 10px; position: relative;"><iframe allowfullscreen frameborder="0" style="width:640px; height:480px" src="https://lucid.app/documents/embedded/14116763-6835-4cac-a4ab-1628af23d9fb" id="INWT8uuYpvhQ"></iframe></div>
+
+<img width="2700" height="2867" alt="Classe" src="https://github.com/user-attachments/assets/fc56d8fe-594d-4eeb-82fc-965ba64cdcd0" />
